@@ -5,6 +5,7 @@ using JWTIdentityApi.Repositories.Context;
 using JWTIdentityApi.Services.Contracts;
 using JWTIdentityApi.Services.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Net;
@@ -29,7 +30,8 @@ namespace JWTIdentityApi
             });
             builder.Services.AddIdentityCore<AppUser>()
                 .AddRoles<AppRole>()
-                .AddEntityFrameworkStores<RepositoryContext>();
+                .AddEntityFrameworkStores<RepositoryContext>()
+                .AddDefaultTokenProviders();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
